@@ -2,7 +2,7 @@ import cs50
 import os
 import datetime
 from datetime import datetime
-from flask import Flask, flash, jsonify, redirect, render_template, request, g, session
+from flask import Flask, flash, jsonify, redirect, render_template, request, g, session, url_for
 import sqlite3
 import binascii, hashlib, base58
 from cs50 import SQL
@@ -102,7 +102,7 @@ def addsite(logged_id):
 
   print (logged_id)
 
-  db.execute("INSERT INTO sites (id,usuario,site,color) VALUES (:logged_id,:logged_id,:sitio,:color)", llogged_id=logged_id, sitio=sitio, color=color)
+  db.execute("INSERT INTO sites (id,usuario,site,color) VALUES (:logged_id,:logged_id,:sitio,:color)", logged_id=logged_id, sitio=sitio, color=color)
 
   print("done it!")
 
@@ -110,7 +110,32 @@ def addsite(logged_id):
 
   print(sites)
 
+  return redirect (url_for('main',logged_id=logged_id))
+
+
+
+
+@app.route("/main.html")
+def main():
+
+  print("-------main------")
+
+  logged_id = request.args['logged_id']
+
+  print(logged_id)
+
+  sites = db.execute("SELECT * FROM sites WHERE  usuario = :logged_id",logged_id=logged_id)
+
+  print(sites)
+
   return render_template("main.html",sites=sites,logged_id=logged_id)
+
+
+
+
+
+
+
 
 
     
