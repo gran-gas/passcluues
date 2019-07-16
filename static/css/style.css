@@ -115,7 +115,7 @@
 .principal-main{
 
     background-color: #343B40;
-    height: 90vh !important;
+    height: 85vh !important;
 }
 
 .modal-insert{
@@ -170,6 +170,13 @@
 
 .bl:hover{
     background-color: rgb(32, 43, 112) !important;
+    color: white;
+}
+
+
+.salir{
+    text-align: end;
+    background-color: #343B40 !important;
     color: white;
 }
 

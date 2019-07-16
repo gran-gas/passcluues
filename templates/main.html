@@ -7,23 +7,23 @@
 <!-- Header for tutorial-->
 
    <div class="card text-center principal-main">
+   <!--  Header block -->
             <div class="card-header">
                ¿Cómo usar Password Clues?
                <a href="generate.html">  
                <button type="button" class="btn btn-dark generate" href="generate.html">Tutorial</button>
                </a>
             </div>
-
+   
+      <!-- botones en header -->
             <div class="card-header buttons-main">
-               <button type="button" class="btn btn-primary insert" data-toggle="modal" data-target="#">Insertar Sitio</button>
-               
+               <button type="button" class="btn btn-primary insert" data-toggle="modal" data-target="#agregar">Insertar Sitio</button> 
 
-               <a href="delete.html">  
-                  <button type="button" class="btn btn-danger delete" href="delete.html">Eliminar Sitio</button>
-               </a>
+                  <button type="button" class="btn btn-danger delete" data-toggle="modal" data-target="#eliminar">Eliminar Sitio</button>
             </div>
+   <!--  Header block -->
 
-
+   <!-- Principal -->
          <div class="card-header">
             <h3>Tus sitios</h3>
          </div>
@@ -39,6 +39,7 @@
               </div>
             </div>
          </div>
+   <!-- Principal -->
 
 
          <!--- INSERT MODAL -->
@@ -46,20 +47,20 @@
          <div class="modal modal-insert" tabindex="-1" role="dialog" id="agregar">
             <div class="modal-dialog" role="document">
                <div class="modal-content">
-                  <div class="modal-header">
-                  <h5 class="modal-title">Agregar Sitio</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                     <span aria-hidden="true">&times;</span>
-                  </button>
-                  </div>
-                  <div class="modal-body">
 
+                  <div class="modal-header">
+                     <h5 class="modal-title">Agregar Sitio</h5>
+                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                     </button>
+                  </div>
+
+                  <div class="modal-body">
                      <form action="{{ url_for('addsite', logged_id=logged_id) }}" method="post">
                         <div class="form-group">
                            <label for="formGroupExampleInput">Ingrese el nombre del sitio</label>
                            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Eg. Google" name="sitename">
                         </div>
-
                         <div class="form-row align-items-center">
                            <div class="col-auto my-1">
                                <select class="custom-select mr-sm-2" id="colorselect" name="sitecolor">
@@ -72,36 +73,101 @@
                               </select>
                            </div>
                         </div>
+                     </div>
 
-                        <!--<div class="form-group">
-                           <label for="formGroupExampleInput2">Another label</label>
-                           <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input">
-                        </div>-->
-
+                        <div class="modal-footer">
+                           <button type="submitt" class="btn btn-primary">Save changes</button>
+                           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         </div>
-                  <div class="modal-footer">
-                  <button type="submitt" class="btn btn-primary">Save changes</button>
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                     </form>                  
                   </div>
-                     </form>
-
-
-                  
                </div>
             </div>
-      </div>
 
-   </main>
-
+            <!-- End Of Modal -->
 
 
 
+                     <!--- MODAL for site deletion-->
+
+         <div class="modal modal-insert" tabindex="-1" role="dialog" id="eliminar">
+            <div class="modal-dialog" role="document">
+               <div class="modal-content">
+
+                  <div class="modal-header">
+                     <h5 class="modal-title">Eliminar Sitio</h5>
+                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                     </button>
+                  </div>
+
+                  <div class="modal-body">
+                     <form action="{{ url_for('delete') }}" method="post">
+
+                        <div class="form-group">
+                           <label for="formGroupExampleInput">Seleccione el sitio a eliminar</label>
+                        </div>
+                     <!-- Modal for loop for site deletion -->
+                        <div class="row my-auto sitios">
+                           <div class="col-sm-4">
+                              <div class="nav flex-column nav-pills pildoras-main" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                                 {% if sites %}
+                                    {%for name in sites %}                                       
+                                       <div class="form-check form-check-inline">
+                                          <a class="nav-link {{ name.color}}" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">{{ name.site }}</a>
+                                          <input class="form-check-input position-static" type="radio" name="deleteRadio" id="blankRadio1" value="{{ name.site }}" aria-label="...">
+                                       </div>                                                                              
+                                    {% endfor %}
+                                 {% endif %}
+                              </div>
+                           </div>
+                        </div>
+                      <!-- Modal for loop for site deletion -->
+
+
+
+
+                  </div>
+
+                        <div class="modal-footer">
+                           <button type="submitt" class="btn btn-primary">Eliminar</button>
+                           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+
+                     </form>  
+
+                  </div>
+               </div>
+            </div>
+
+            <!-- End Of Modal -->
+
+       </div>
+
+                <!--  Header block -->
+
+
+      </main>
 
 
 
 
 
 
+
+
+
+
+
+
+            <div class="card-header salir">
+               ¿Salir?
+               <a href="logout.html">  
+               <button type="button" class="btn btn-dark generate" href="generate.html">Cerrar Sesión</button>
+               </a>
+            </div>
 
 
 {% endblock %}
+
+
