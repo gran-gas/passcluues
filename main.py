@@ -53,7 +53,7 @@ def index():
 
           print(logged_id)
 
-          sites = db.execute("SELECT site FROM sites WHERE  usuario = :logged_id",logged_id=logged_id)
+          sites = db.execute("SELECT * FROM sites WHERE  usuario = :logged_id",logged_id=logged_id)
 
           print(sites)
 
@@ -110,7 +110,9 @@ def addsite(logged_id):
 
   print(sites)
 
-  return redirect (url_for('main',logged_id=logged_id))
+  session['logged'] = logged_id
+
+  return redirect (url_for('main'))
 
 
 
@@ -120,7 +122,7 @@ def main():
 
   print("-------main------")
 
-  logged_id = request.args['logged_id']
+  logged_id = session['logged']
 
   print(logged_id)
 
@@ -129,6 +131,38 @@ def main():
   print(sites)
 
   return render_template("main.html",sites=sites,logged_id=logged_id)
+
+
+
+@app.route("/delete.html", methods=['GET', 'POST'])
+def delete():
+
+  print("-------delete------")
+
+  logged_id = session['logged']
+
+  print(logged_id)
+
+  deleted = request.form.get("deleteRadio")
+
+  db.execute("DELETE FROM sites WHERE  (usuario,site) = (:logged_id, :deleted)",logged_id=logged_id, deleted=deleted)
+
+  sites = db.execute("SELECT * FROM sites WHERE  usuario = :logged_id",logged_id=logged_id)
+
+  print(sites)
+
+  return render_template("main.html",sites=sites,logged_id=logged_id)
+
+
+@app.route("/logout.html")
+def logout():
+
+  session.clear()
+
+  logged_id = 0
+
+  return render_template("index.html")
+
 
 
 
