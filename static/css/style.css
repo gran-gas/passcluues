@@ -1,0 +1,179 @@
+#form-bg-lg,.md-form{
+
+    background-color: #343B40;
+    color: white;
+    border: none;
+
+}
+#form-bg-lg{
+
+    border: 1px solid gray;
+    height: 20vh;
+
+}
+
+.md-form>h5{
+
+    text-align: center;
+}
+
+.principal{
+
+    background-color: #343B40;
+    color: white;
+    height: 90vh;
+    vertical-align: middle;
+}
+
+.generate{
+
+    margin-left: 0.8vw;
+}
+
+@media (max-width: 525px){
+
+    .card-header{
+        font-size: 0.8em;
+    }
+    .card-header>.generate-button{
+        margin-top: 1em;
+        font-size: 0.9em;
+    }
+
+    .footer-title{
+
+        font-size: 0.8em;
+
+    }
+
+
+
+}
+
+@media (max-width: 276px){
+
+    .insert{
+
+        margin-bottom: 2vh;
+    }
+
+}
+
+.center{
+
+    text-align: center;
+    align-self: center;
+
+}
+.my-auto{
+
+    justify-content: center;
+}
+
+.key{
+
+    padding: 5vw;
+}
+
+.lista-principal{
+
+    background-color: #343B40 !important;
+
+}
+
+.buttons-main{
+
+    margin-bottom: 5vh;
+    margin-top: 5vh;
+    background-color: #343B40;
+    border: none;
+}
+
+.principal-main{
+
+    background-color: #343B40;
+    color: white;
+    vertical-align: middle;
+    height: 80vh;
+}
+
+.nav-link{
+
+    background-color: brown !important;
+    margin: 1vh;
+    color: white;
+
+
+}
+
+/*.nav-link:hover{
+
+    background-color: rgb(97, 23, 23) !important;
+    color: rgb(201, 187, 187)!important;
+}*/
+
+.principal-main{
+
+    background-color: #343B40;
+    height: 90vh !important;
+}
+
+.modal-insert{
+
+    background-color: #343B40 !important;
+    color: black;
+
+}
+
+.custom-select{
+
+    color: white;
+}
+
+
+
+.br {
+    background-color: #5D4037 !important;
+}
+
+.br:hover{
+
+    background-color: rgb(61, 41, 35) !important;
+
+}
+
+.re{
+    background-color: #D32F2F !important;
+}
+
+.re:hover{
+
+    background-color: rgb(134, 31, 31) !important;
+}
+
+.gr{
+
+    background-color: #388E3C !important;
+}
+
+.gr:hover{
+
+    background-color: rgb(36, 90, 38) !important;
+}
+
+.bl{
+    background-color: #303F9F !important;
+}
+
+.bl:hover{
+    background-color: rgb(32, 43, 112) !important;
+}
+
+
+
+
+
+
+
+
+

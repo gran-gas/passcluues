@@ -1,0 +1,36 @@
+{% extends 'layout.html'  %}
+{% block main %}
+    <main>
+        <div class="card text-center principal">
+            <form class="my-auto">
+            <nav class="navbar navbar-dark bg-dark my-auto">
+                    <a class="navbar-brand"href="">
+                    <img src="../static/img/key.svg" width="90" height="90" class="d-inline-block align-top" alt="">
+                    </a>
+                </nav>
+            
+                <div class="card-body align-middle ">
+                    <h5 class="card-title">Presione el botón para generar su clave de acceso</h5>
+                    <p>Copie y pegue esta clave de acceso donde pueda acceder a ella facilmente</p>
+                    <div class="form-row d-flex justify-content-center">
+                            <div class="col-11">
+                                <a href="success.html">
+                                    <button type="button" class="btn btn-info generate">Generar clave de acceso</button>
+                                </a>
+                            </div>
+                    </div>
+
+                    <br>
+
+                    <div class="form-row d-flex justify-content-center">
+                            <div class="col-5">
+                                    
+                            </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </main>
+
+
+{% endblock %}

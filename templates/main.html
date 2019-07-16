@@ -1,0 +1,107 @@
+
+{% extends 'layout.html' %} 
+{% block main %} 
+
+<main class="main-h">
+
+<!-- Header for tutorial-->
+
+   <div class="card text-center principal-main">
+            <div class="card-header">
+               ¿Cómo usar Password Clues?
+               <a href="generate.html">  
+               <button type="button" class="btn btn-dark generate" href="generate.html">Tutorial</button>
+               </a>
+            </div>
+
+            <div class="card-header buttons-main">
+               <button type="button" class="btn btn-primary insert" data-toggle="modal" data-target="#modal-insert">Insertar Sitio</button>
+               
+
+               <a href="delete.html">  
+                  <button type="button" class="btn btn-danger delete" href="delete.html">Eliminar Sitio</button>
+               </a>
+            </div>
+
+
+         <div class="card-header">
+            <h3>Tus sitios</h3>
+         </div>
+
+         <div class="row my-auto sitios">
+            <div class="col-sm-4">
+              <div class="nav flex-column nav-pills pildoras-main" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+              {% if sites %}
+              {%for name in sites %}
+                <a class="nav-link {{ name.color}}" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">{{ name.site }}</a>
+               {% endfor %}
+               {% endif %}
+              </div>
+            </div>
+         </div>
+
+
+         <!--- INSERT MODAL -->
+
+         <div class="modal modal-insert" tabindex="-1" role="dialog" id="modal-insert">
+            <div class="modal-dialog" role="document">
+               <div class="modal-content">
+                  <div class="modal-header">
+                  <h5 class="modal-title">Agregar Sitio</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                     <span aria-hidden="true">&times;</span>
+                  </button>
+                  </div>
+                  <div class="modal-body">
+
+                     <form action="{{ url_for('addsite', logged_id=logged_id) }}" method="post">
+                        <div class="form-group">
+                           <label for="formGroupExampleInput">Ingrese el nombre del sitio</label>
+                           <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Eg. Google" name="sitename">
+                        </div>
+
+                        <div class="form-row align-items-center">
+                           <div class="col-auto my-1">
+                               <select class="custom-select mr-sm-2" id="colorselect" name="sitecolor">
+
+                                    <option value="bl" class="bl">B</option>
+                                    <option value="gr" class="gr">G</option>
+                                    <option value="re" class="re" selected="selected">R</option>
+                                    <option value="br" class="br">Br</option>
+ 
+                              </select>
+                           </div>
+                        </div>
+
+                        <!--<div class="form-group">
+                           <label for="formGroupExampleInput2">Another label</label>
+                           <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input">
+                        </div>-->
+
+                        </div>
+                  <div class="modal-footer">
+                  <button type="submitt" class="btn btn-primary">Save changes</button>
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  </div>
+                     </form>
+
+
+                  
+               </div>
+            </div>
+      </div>
+
+   </main>
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}
