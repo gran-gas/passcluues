@@ -134,7 +134,7 @@ def main():
 
 
 
-@app.route("/delete.html", methods=['GET', 'POST'])
+@app.route('/delete.html', methods=['GET', 'POST'])
 def delete():
 
   print("-------delete------")
