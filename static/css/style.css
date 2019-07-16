@@ -139,6 +139,7 @@
 .br:hover{
 
     background-color: rgb(61, 41, 35) !important;
+    color: white;
 
 }
 
@@ -149,6 +150,7 @@
 .re:hover{
 
     background-color: rgb(134, 31, 31) !important;
+    color: white;
 }
 
 .gr{
@@ -159,6 +161,7 @@
 .gr:hover{
 
     background-color: rgb(36, 90, 38) !important;
+    color: white;
 }
 
 .bl{
@@ -167,6 +170,7 @@
 
 .bl:hover{
     background-color: rgb(32, 43, 112) !important;
+    color: white;
 }
 
 
