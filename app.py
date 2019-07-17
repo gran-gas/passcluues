@@ -51,6 +51,8 @@ def index():
 
           logged_id = key[0]["id"]
 
+          session['logged'] = logged_id
+
           print(logged_id)
 
           sites = db.execute("SELECT * FROM sites WHERE  usuario = :logged_id",logged_id=logged_id)
@@ -89,8 +91,10 @@ def success():
 
   
 
-@app.route('/addsite.html/<int:logged_id>/', methods=['GET', 'POST'])
+@app.route('/addsite.html', methods=['GET', 'POST'])
 def addsite(logged_id):
+
+  logged_id = session['logged']
       
   sitio = request.form.get("sitename")
 
@@ -110,7 +114,7 @@ def addsite(logged_id):
 
   print(sites)
 
-  session['logged'] = logged_id
+  
 
   return redirect (url_for('main'))
 
@@ -171,7 +175,6 @@ def results():
   print("-------results------")
 
   logged_id = session['logged']
-
 
 
   sitio = request.form.get("selected")
