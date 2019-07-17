@@ -5,23 +5,22 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">{{ sitio }}</h5>
+        <h2 class="modal-title">{{ sitio }}</h2>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
 
-      {% if description %}
       <div class="modal-body">
-        <h6>Descripción</h6>
-        <p>{{ description.description }}</p>
+        <h5>Why am i logged here?</h5>
+        <p>{{ description[0]['description'] }}</p>
       </div>
-      {% endif %}
+
 
 
       {% if keywords %}      
         <div class="modal-body">
-        <h6>Keywords</h6>
+        <h5>Keywords</h5>
         {% for word in keywords %}
             <h2><span class="badge badge-secondary">{{ word.keyword }}</span></h2>
         {% endfor %}        
@@ -35,7 +34,7 @@
                 <div class="form-group">
                     <label for="formGroupExampleInput">Nueva keyword</label>
                     <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Eg. usual combination, usual numbers, birthday, sum" name="newKey">
-                    <button type="submitt" class="btn btn-primary">Add</button>
+                    <button type="submitt" class="btn btn-primary btn-right">Add</button>
                 </div>
             </div>
 
@@ -50,7 +49,7 @@
                 <div class="form-group">
                     <label for="formGroupExampleInput">Nueva keyword</label>
                     <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Eg. email site, site for machine learning" name="newDesc">
-                    <button type="submitt" class="btn btn-primary">Add</button>
+                    <button type="submitt" class="btn btn-primary btn-right">Add</button>
                 </div>
             </div>
         
