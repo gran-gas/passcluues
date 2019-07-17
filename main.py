@@ -51,6 +51,8 @@ def index():
 
           logged_id = key[0]["id"]
 
+          session['logged'] = logged_id
+
           print(logged_id)
 
           sites = db.execute("SELECT * FROM sites WHERE  usuario = :logged_id",logged_id=logged_id)
@@ -89,8 +91,10 @@ def success():
 
   
 
-@app.route('/addsite.html/<int:logged_id>/', methods=['GET', 'POST'])
+@app.route('/addsite.html', methods=['GET', 'POST'])
 def addsite(logged_id):
+
+  logged_id = session['logged']
       
   sitio = request.form.get("sitename")
 
@@ -110,7 +114,7 @@ def addsite(logged_id):
 
   print(sites)
 
-  session['logged'] = logged_id
+  
 
   return redirect (url_for('main'))
 
@@ -134,7 +138,7 @@ def main():
 
 
 
-@app.route('/delete.html', methods=['GET', 'POST'])
+@app.route("/delete.html", methods=['GET', 'POST'])
 def delete():
 
   print("-------delete------")
@@ -162,6 +166,64 @@ def logout():
   logged_id = 0
 
   return render_template("index.html")
+
+
+
+@app.route('/results.html', methods=['GET', 'POST'])
+def results():
+
+  print("-------results------")
+
+  logged_id = session['logged']
+
+
+  sitio = request.form.get("selected")
+
+  print(sitio)
+
+  session['sitio'] = sitio
+
+  keywords = db.execute("SELECT keyword FROM words WHERE (usuario,site) = (:logged_id,:sitio)", logged_id=logged_id, sitio=sitio)
+
+  description = db.execute("SELECT description FROM words WHERE (usuario,site) = (:logged_id,:sitio)", logged_id=logged_id, sitio=sitio)
+
+  return render_template("results.html", keywords=keywords, sitio=sitio, description=description)
+
+
+@app.route('/newkey.html', methods=['GET', 'POST'])
+def newkey():
+
+  print("------new key -------")
+
+  logged_id = session['logged']
+
+  site = session['sitio']
+
+  newKey = request.form.get("newKey")
+
+  print(newKey)
+
+  newDesc = request.form.get("newDesc")
+
+  db.execute("INSERT INTO words (user_id,site,keyword,usuario,description) VALUES (:logged_id,:site,:newKey,:logged_id,:newDesc)", logged_id=logged_id, site=site, newKey=newKey, newDesc=newDesc)
+
+  keywords = db.execute("SELECT keyword FROM words WHERE (usuario,site) = (:logged_id,:site)", logged_id=logged_id, site=site)
+
+  description = db.execute("SELECT description FROM words WHERE (usuario,site) = (:logged_id,:site)", logged_id=logged_id, sitio=site)
+
+  return render_template("results.html", keywords=keywords, site=site, description=description)
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
