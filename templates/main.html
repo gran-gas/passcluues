@@ -33,7 +33,12 @@
               <div class="nav flex-column nav-pills pildoras-main" id="v-pills-tab" role="tablist" aria-orientation="vertical">
               {% if sites %}
               {%for name in sites %}
-                <a class="nav-link {{ name.color}}" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">{{ name.site }}</a>
+
+              <form action="{{ url_for('results', logged_id=logged_id) }}" method="post">
+                <input class="form-check-input position-static" type="radio" name="selected" id="blankRadio1" value="{{ name.site }}" aria-label="..." style="display:none;" checked>
+                <button class="nav-link {{ name.color}}" type="submitt" aria-selected="true">{{ name.site }}</button>
+               </form>
+
                {% endfor %}
                {% endif %}
               </div>
@@ -141,6 +146,7 @@
             </div>
 
             <!-- End Of Modal -->
+            
 
        </div>
 

@@ -1,0 +1,79 @@
+{% extends 'layout.html'%}
+{% block main %}
+
+<div class="modal in show" tabindex="1" role="dialog" id="myModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">{{ sitio }}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      {% if description %}
+      <div class="modal-body">
+        <h6>Descripción</h6>
+        <p>{{ description.description }}</p>
+      </div>
+      {% endif %}
+
+
+      {% if keywords %}      
+        <div class="modal-body">
+        <h6>Keywords</h6>
+        {% for word in keywords %}
+            <h2><span class="badge badge-secondary">{{ word.keyword }}</span></h2>
+        {% endfor %}        
+        </div>
+      {% endif %}
+
+        <form action="{{ url_for('newkey') }}" method="post">
+
+            <div class="modal-body">
+                <h6>Agregar Keyword</h6>
+                <div class="form-group">
+                    <label for="formGroupExampleInput">Nueva keyword</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Eg. usual combination, usual numbers, birthday, sum" name="newKey">
+                    <button type="submitt" class="btn btn-primary">Add</button>
+                </div>
+            </div>
+
+            <div class="modal-body">
+            {% if not description %}
+                <h6>Agregar Description</h6>
+            {% endif %}
+
+            {%if description %}
+                <h6>Cambiar Description</h6>
+            {% endif %}
+                <div class="form-group">
+                    <label for="formGroupExampleInput">Nueva keyword</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Eg. email site, site for machine learning" name="newDesc">
+                    <button type="submitt" class="btn btn-primary">Add</button>
+                </div>
+            </div>
+        
+        </form>
+
+      <div class="modal-footer">
+        
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}
+
+

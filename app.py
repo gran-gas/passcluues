@@ -165,6 +165,65 @@ def logout():
 
 
 
+@app.route('/results.html', methods=['GET', 'POST'])
+def results():
+
+  print("-------results------")
+
+  logged_id = session['logged']
+
+
+
+  sitio = request.form.get("selected")
+
+  print(sitio)
+
+  session['sitio'] = sitio
+
+  keywords = db.execute("SELECT keyword FROM words WHERE (usuario,site) = (:logged_id,:sitio)", logged_id=logged_id, sitio=sitio)
+
+  description = db.execute("SELECT description FROM words WHERE (usuario,site) = (:logged_id,:sitio)", logged_id=logged_id, sitio=sitio)
+
+  return render_template("results.html", keywords=keywords, sitio=sitio, description=description)
+
+
+@app.route('/newkey.html', methods=['GET', 'POST'])
+def newkey():
+
+  print("------new key -------")
+
+  logged_id = session['logged']
+
+  site = session['sitio']
+
+  newKey = request.form.get("newKey")
+
+  print(newKey)
+
+  newDesc = request.form.get("newDesc")
+
+  db.execute("INSERT INTO words (user_id,site,keyword,usuario,description) VALUES (:logged_id,:site,:newKey,:logged_id,:newDesc)", logged_id=logged_id, site=site, newKey=newKey, newDesc=newDesc)
+
+  keywords = db.execute("SELECT keyword FROM words WHERE (usuario,site) = (:logged_id,:site)", logged_id=logged_id, site=site)
+
+  description = db.execute("SELECT description FROM words WHERE (usuario,site) = (:logged_id,:site)", logged_id=logged_id, sitio=site)
+
+  return render_template("results.html", keywords=keywords, site=site, description=description)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
