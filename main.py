@@ -92,7 +92,7 @@ def success():
   
 
 @app.route('/addsite.html', methods=['GET', 'POST'])
-def addsite(logged_id):
+def addsite():
 
   logged_id = session['logged']
       
