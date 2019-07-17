@@ -36,7 +36,7 @@
 
               <form action="{{ url_for('results') }}" method="post">
                 <input class="form-check-input position-static" type="radio" name="selected" id="blankRadio1" value="{{ name.site }}" aria-label="..." style="display:none;" checked>
-                <button class="nav-link {{ name.color}}" type="submitt" aria-selected="true">{{ name.site }}</button>
+                <button class="nav-link sitios  {{ name.color}}" type="submitt" aria-selected="true">{{ name.site }}</button>
                </form>
 
                {% endfor %}
