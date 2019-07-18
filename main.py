@@ -210,7 +210,7 @@ def newkey():
 
   
 
-  db.execute("INSERT INTO words (user_id,site,keyword,usuario) VALUES (:logged_id,:sitio,:newKey,:logged_id)", logged_id=logged_id, sitio=sitio, newKey=newKey)
+  db.execute("INSERT INTO words (site,keyword,usuario) VALUES (:sitio,:newKey,:logged_id)", logged_id=logged_id, sitio=sitio, newKey=newKey)
 
   
 
