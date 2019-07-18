@@ -24,6 +24,8 @@
         </nav>
     </header>
 
+
+
   
      <div class="card text-center principal">
             <div class="card-header">
@@ -32,12 +34,25 @@
                <button type="button" class="btn btn-info generate-button" href="generate.html">Generar clave de acceso</button>
                </a>
             </div>
+            <br>
+
+                      <div class="card-header bg-black">
+                        ¿Cómo usar Password Clues?
+                        <a href="generate.html">  
+                        <button type="button" class="btn btn-dark generate" href="generate.html">Tutorial</button>
+                        </a>
+                      </div>
+
+
+
             <form class="my-auto" method="post" action="{{ url_for('index') }}">
-            <nav class="navbar navbar-dark bg-dark my-auto">
+            <nav class="navbar navbar-dark bg-dark my-auto intro-logo">
                     <a class="navbar-brand"href="">
                     <img src="../static/img/argentina.svg" width="90" height="90" class="d-inline-block align-top" alt="">
                     </a>
                 </nav>
+            
+
             
                 <div class="card-body align-middle ">
                     <h5 class="card-title">Ingrese aquí su clave de acceso</h5>
@@ -49,12 +64,18 @@
                         </div>
                         <form  action="success.html" >
 
+                          <div class="row my-auto">
+                            <div class="col-lg-3 ">
                             <input type="text" class="form-control" placeholder="" name="userkey"><br>
                             <button type="submit" class="btn btn-info generate">Ingresar</button>
+                            </div>
+                          </div>
 
                         
 
                         <br>
+
+            
 
                         <div class="form-row d-flex justify-content-center">
                                 <div class="col-5">
@@ -65,6 +86,8 @@
                 </div>
             </form>
           </div>
+
+          
 
         <nav class="navbar navbar-dark bg-dark ">
             <a class="navbar-brand footer-title"href="">

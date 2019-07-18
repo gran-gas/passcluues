@@ -4,7 +4,7 @@ import datetime
 from datetime import datetime
 from flask import Flask, flash, jsonify, redirect, render_template, request, g, session, url_for
 import sqlite3
-import binascii, hashlib, base58
+import secrets
 from cs50 import SQL
 
 
@@ -80,8 +80,7 @@ def generate():
 @app.route("/success.html")
 def success():
 
-    fullkey = "80"+ binascii.hexlify(os.urandom(32)).decode()
-    keygen = hashlib.sha256(binascii.unhexlify(fullkey)).hexdigest()
+    keygen = secrets.token_hex(8)
 
     db.execute("INSERT INTO users (pass) VALUES (:keygen)",keygen=keygen)
 
