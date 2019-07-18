@@ -28,8 +28,6 @@
 .generate{
 
     margin-left: 0.8vw;
-    font-size: 1em;
-    width: 10vw;
 }
 
 @media (max-width: 525px){
@@ -228,14 +226,7 @@
         color: white;
 }
 
-.keygen{
 
-    background-color: rgb(11, 12, 14);
-    width: 30vw;
-    margin: 0 auto;
-    height: 4vh;
-
-}
 .boton{
 
     border: 1px solid white;
