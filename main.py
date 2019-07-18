@@ -209,9 +209,30 @@ def newkey():
 
   print(newKey)
 
-  newDesc = request.form.get("newDesc")
+  
 
   db.execute("INSERT INTO words (user_id,site,keyword,usuario) VALUES (:logged_id,:sitio,:newKey,:logged_id)", logged_id=logged_id, sitio=sitio, newKey=newKey)
+
+  
+
+  keywords = db.execute("SELECT keyword FROM words WHERE (usuario,site) = (:logged_id,:sitio)", logged_id=logged_id, sitio=sitio)
+
+  description = db.execute("SELECT description FROM descriptions WHERE (usuario,sitio) = (:logged_id,:sitio)", logged_id=logged_id, sitio=sitio)
+
+  print(description)
+
+  return render_template("results.html", keywords=keywords, sitio=sitio, description=description)
+
+
+
+@app.route('/newdesc.html', methods=['GET', 'POST'])
+def newdesc():
+
+  logged_id = session['logged']
+
+  sitio = session['sitio']
+
+  newDesc = request.form.get("newDesc")
 
   db.execute("UPDATE descriptions SET description = :newDesc WHERE (usuario,sitio) = (:logged_id, :sitio)", newDesc=newDesc, logged_id=logged_id, sitio=sitio)
 
@@ -222,6 +243,7 @@ def newkey():
   print(description)
 
   return render_template("results.html", keywords=keywords, sitio=sitio, description=description)
+
 
 
 

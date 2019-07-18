@@ -35,6 +35,7 @@
                     <label for="formGroupExampleInput">Nueva keyword</label>
                     <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Eg. usual combination, usual numbers, birthday, sum" name="newKey">
                     <button type="submitt" class="btn btn-primary btn-right">Add</button>
+        </form>
                 </div>
             </div>
 
@@ -47,9 +48,11 @@
                 <h6>Cambiar Description</h6>
             {% endif %}
                 <div class="form-group">
+                 <form action="{{ url_for('newdesc') }}" method="post">
                     <label for="formGroupExampleInput">Nueva keyword</label>
                     <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Eg. email site, site for machine learning" name="newDesc">
                     <button type="submitt" class="btn btn-primary btn-right">Add</button>
+                  </form>
                 </div>
             </div>
         
