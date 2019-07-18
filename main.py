@@ -105,7 +105,7 @@ def addsite():
 
   print (logged_id)
 
-  db.execute("INSERT INTO sites (id,usuario,site,color) VALUES (:logged_id,:logged_id,:sitio,:color)", logged_id=logged_id, sitio=sitio, color=color)
+  db.execute("INSERT INTO sites (usuario,site,color) VALUES (:logged_id,:sitio,:color)", logged_id=logged_id, sitio=sitio, color=color)
 
   db.execute("INSERT INTO descriptions (user_id, usuario, sitio) VALUES (:logged_id, :logged_id, :sitio)", logged_id=logged_id, sitio=sitio)
 
