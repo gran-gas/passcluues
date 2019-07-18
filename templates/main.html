@@ -64,16 +64,17 @@
                      <form action="{{ url_for('addsite') }}" method="post">
                         <div class="form-group">
                            <label for="formGroupExampleInput">Ingrese el nombre del sitio</label>
-                           <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Eg. Google" name="sitename">
+                           <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Eg. Google" name="sitename" required>
                         </div>
                         <div class="form-row align-items-center">
                            <div class="col-auto my-1">
-                               <select class="custom-select mr-sm-2" id="colorselect" name="sitecolor">
+                           <p class="h6">Select color</p>
+                               <select class="custom-select mr-sm-2 bl" id="colorselect" name="sitecolor">
 
-                                    <option value="bl" class="bl">B</option>
-                                    <option value="gr" class="gr">G</option>
-                                    <option value="re" class="re" selected="selected">R</option>
-                                    <option value="br" class="br">Br</option>
+                                    <option value="bl" class="bl" selected>Blue</option>
+                                    <option value="gr" class="gr">Green</option>
+                                    <option value="re" class="re" >Red</option>
+                                    <option value="br" class="br">Brown</option>
  
                               </select>
                            </div>

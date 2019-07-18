@@ -1,6 +1,17 @@
 {% extends 'layout.html'%}
 {% block main %}
 
+<div class="card text-center principal-main">
+
+  <a href="https://cs50.harvard.edu" class="white">
+    <h1 class="cs">CS50</h1>
+  </a>
+
+  <a href="main.html" class="btn btn-dark go-back">Go back</a>
+
+
+</div>
+
 <div class="modal in show" tabindex="1" role="dialog" id="myModal">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -34,7 +45,7 @@
                 <div class="form-group">
                     <label for="formGroupExampleInput">Nueva keyword</label>
                     <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Eg. usual combination, usual numbers, birthday, sum" name="newKey">
-                    <button type="submitt" class="btn btn-primary btn-right">Add</button>
+                    <button type="submitt" class="btn btn-primary btn-right">+</button>
         </form>
                 </div>
             </div>
@@ -51,7 +62,7 @@
                  <form action="{{ url_for('newdesc') }}" method="post">
                     <label for="formGroupExampleInput">Nueva keyword</label>
                     <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Eg. email site, site for machine learning" name="newDesc">
-                    <button type="submitt" class="btn btn-primary btn-right">Add</button>
+                    <button type="submitt" class="btn btn-primary btn-right">+</button>
                   </form>
                 </div>
             </div>
