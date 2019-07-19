@@ -105,7 +105,9 @@ def addsite():
 
   print (logged_id)
 
-  db.execute("INSERT INTO sites (usuario,site,color) VALUES (:logged_id,:sitio,:color)", logged_id=logged_id, sitio=sitio, color=color)
+  url = request.form.get("url")
+
+  db.execute("INSERT INTO sites (usuario,site,color,url) VALUES (:logged_id,:sitio,:color,:url)", logged_id=logged_id, sitio=sitio, color=color, url=url)
 
   db.execute("INSERT INTO descriptions (user_id, usuario, sitio) VALUES (:logged_id, :logged_id, :sitio)", logged_id=logged_id, sitio=sitio)
 
@@ -188,9 +190,11 @@ def results():
 
   description = db.execute("SELECT description FROM descriptions WHERE (usuario,sitio) = (:logged_id,:sitio)", logged_id=logged_id, sitio=sitio)
 
+  url = db.execute("SELECT url FROM sites WHERE (usuario,site) = (:logged_id,:sitio)", logged_id=logged_id, sitio=sitio)
+
   print(description)
 
-  return render_template("results.html", keywords=keywords, sitio=sitio, description=description)
+  return render_template("results.html", keywords=keywords, sitio=sitio, description=description, url=url)
 
 
 @app.route('/newkey.html', methods=['GET', 'POST'])
@@ -218,9 +222,11 @@ def newkey():
 
   description = db.execute("SELECT description FROM descriptions WHERE (usuario,sitio) = (:logged_id,:sitio)", logged_id=logged_id, sitio=sitio)
 
+  url = db.execute("SELECT url FROM sites WHERE (usuario,site) = (:logged_id,:sitio)", logged_id=logged_id, sitio=sitio)
+
   print(description)
 
-  return render_template("results.html", keywords=keywords, sitio=sitio, description=description)
+  return render_template("results.html", keywords=keywords, sitio=sitio, description=description, url=url)
 
 
 
@@ -239,11 +245,18 @@ def newdesc():
 
   description = db.execute("SELECT description FROM descriptions WHERE (usuario,sitio) = (:logged_id,:sitio)", logged_id=logged_id, sitio=sitio)
 
+  url = db.execute("SELECT url FROM sites WHERE (usuario,site) = (:logged_id,:sitio)", logged_id=logged_id, sitio=sitio)
+
   print(description)
 
-  return render_template("results.html", keywords=keywords, sitio=sitio, description=description)
+  return render_template("results.html", keywords=keywords, sitio=sitio, description=description, url=url)
 
 
+
+@app.route('/tutorial.html')
+def tutorial():
+
+  return render_template("tutorial.html")
 
 
 

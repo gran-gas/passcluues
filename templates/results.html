@@ -17,9 +17,11 @@
     <div class="modal-content">
       <div class="modal-header">
         <h2 class="modal-title">{{ sitio }}</h2>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+      </div>
+
+      <div class="modal-body">
+        <h5>URL</h5>
+        <a href="{{ url[0]['url'] }}" class="btn btn-dark" target="_blank">Open Site</a>
       </div>
 
       <div class="modal-body">
@@ -41,10 +43,10 @@
         <form action="{{ url_for('newkey') }}" method="post">
 
             <div class="modal-body">
-                <h6>Agregar Keyword</h6>
+                <h6>Password Clues</h6>
                 <div class="form-group">
-                    <label for="formGroupExampleInput">Nueva keyword</label>
-                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Eg. usual combination, usual numbers, birthday, sum" name="newKey">
+                    <label for="formGroupExampleInput">New keyword</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Eg. usual combination, usual numbers, birthday, sum" name="newKey" required>
                     <button type="submitt" class="btn btn-primary btn-right">+</button>
         </form>
                 </div>
@@ -52,16 +54,16 @@
 
             <div class="modal-body">
             {% if not description %}
-                <h6>Agregar Description</h6>
+                <h6>New Description</h6>
             {% endif %}
 
             {%if description %}
-                <h6>Cambiar Description</h6>
+                <h6>Why am i logged here?</h6>
             {% endif %}
                 <div class="form-group">
                  <form action="{{ url_for('newdesc') }}" method="post">
-                    <label for="formGroupExampleInput">Nueva keyword</label>
-                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Eg. email site, site for machine learning" name="newDesc">
+                    <label for="formGroupExampleInput">New description</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Eg. email app, site to learn to program, college site" name="newDesc" required>
                     <button type="submitt" class="btn btn-primary btn-right">+</button>
                   </form>
                 </div>
@@ -70,7 +72,7 @@
         </form>
 
       <div class="modal-footer">
-        <a href="main.html" class="btn btn-secondary">Volver
+        <a href="main.html" class="btn btn-secondary">Sites
         
         </a>
       </div>

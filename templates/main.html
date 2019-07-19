@@ -9,23 +9,23 @@
    <div class="card text-center principal-main">
    <!--  Header block -->
             <div class="card-header">
-               ¿Cómo usar Password Clues?
-               <a href="generate.html">  
+               Logged Tutorial
+               <a href="tutorial.html">  
                <button type="button" class="btn btn-dark generate" href="generate.html">Tutorial</button>
                </a>
             </div>
    
       <!-- botones en header -->
             <div class="card-header buttons-main">
-               <button type="button" class="btn btn-primary insert" data-toggle="modal" data-target="#agregar">Insertar Sitio</button> 
+               <button type="button" class="btn btn-primary insert" data-toggle="modal" data-target="#agregar">New Site</button> 
 
-                  <button type="button" class="btn btn-danger delete" data-toggle="modal" data-target="#eliminar">Eliminar Sitio</button>
+                  <button type="button" class="btn btn-danger delete" data-toggle="modal" data-target="#eliminar">Delete Site</button>
             </div>
    <!--  Header block -->
 
    <!-- Principal -->
          <div class="card-header">
-            <h3>Tus sitios</h3>
+            <h3>Sites</h3>
          </div>
 
          <div class="row my-auto sitios">
@@ -54,7 +54,7 @@
                <div class="modal-content">
 
                   <div class="modal-header">
-                     <h5 class="modal-title">Agregar Sitio</h5>
+                     <h5 class="modal-title">New Site</h5>
                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                      </button>
@@ -63,8 +63,13 @@
                   <div class="modal-body">
                      <form action="{{ url_for('addsite') }}" method="post">
                         <div class="form-group">
-                           <label for="formGroupExampleInput">Ingrese el nombre del sitio</label>
+                           <label for="formGroupExampleInput">Enter site name here</label>
                            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Eg. Google" name="sitename" required>
+                        </div>
+
+                        <div class="form-group">
+                           <label for="formGroupExampleInput">Enter site url</label>
+                           <input type="text" class="form-control" id="formGroupExampleInput" placeholder="https://www.siteurlexample.com" name="url">
                         </div>
                         <div class="form-row align-items-center">
                            <div class="col-auto my-1">
@@ -82,7 +87,7 @@
                      </div>
 
                         <div class="modal-footer">
-                           <button type="submitt" class="btn btn-primary">Save changes</button>
+                           <button type="submitt" class="btn btn-primary">Save</button>
                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         </div>
                      </form>                  
@@ -101,7 +106,7 @@
                <div class="modal-content">
 
                   <div class="modal-header">
-                     <h5 class="modal-title">Eliminar Sitio</h5>
+                     <h5 class="modal-title">Delete Site</h5>
                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                      </button>
@@ -111,7 +116,7 @@
                      <form action="{{ url_for('delete') }}" method="post">
 
                         <div class="form-group">
-                           <label for="formGroupExampleInput">Seleccione el sitio a eliminar</label>
+                           <label for="formGroupExampleInput">Current Sites</label>
                         </div>
                      <!-- Modal for loop for site deletion -->
                         <div class="row my-auto sitios">
@@ -136,7 +141,7 @@
                   </div>
 
                         <div class="modal-footer">
-                           <button type="submitt" class="btn btn-primary">Eliminar</button>
+                           <button type="submitt" class="btn btn-primary">Delete</button>
                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         </div>
 
@@ -168,9 +173,9 @@
 
 
             <div class="card-header salir">
-               ¿Salir?
+               Log Out
                <a href="logout.html">  
-               <button type="button" class="btn btn-dark generate" href="generate.html">Cerrar Sesión</button>
+               <button type="button" class="btn btn-dark generate" href="generate.html">Log Out</button>
                </a>
             </div>
 

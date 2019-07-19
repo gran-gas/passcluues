@@ -232,6 +232,42 @@
     border: 1px solid white;
 }
 
+.l-a-t{
+
+    text-align: initial;
+    margin-left: 10%;
+}
+
+.principal-main-tutorial{
+
+    background-color: #343B40;
+    color: white;
+}
+
+@media (max-width: 1000px){
+
+    .l-a-t{
+
+            font-size: 0.8rem !important;
+    }
+
+    .img-tuto{
+
+        width: 80vw;
+        height: 50vh;
+        
+    
+    }
+}
+
+.img-tuto{
+
+    width: 40vw;
+    height: 40vh;
+}
+
+
+
 
 
 
