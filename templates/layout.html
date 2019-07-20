@@ -63,6 +63,16 @@ $(document).ready(function() {
 var clipboard = new ClipboardJS('.boton');
 </script>
 
+<script type='text/javascript'>
+         $(document).ready(function() {
+            //option A
+            $("#formgenerate").submit(function(e){
+                alert('Key copied to clipboard');
+                e.preventDefault(e);
+            });
+        });
+        </script>
+
 
   </body>
 </html>
